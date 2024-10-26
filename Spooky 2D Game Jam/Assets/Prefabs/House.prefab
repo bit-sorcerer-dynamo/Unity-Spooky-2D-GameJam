@@ -73,6 +73,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCam: {fileID: 0}
+  UIHolder: {fileID: 0}
+  healthPurchaseButton: {fileID: 0}
+  candyPurchaseButton: {fileID: 0}
+  player: {fileID: 0}
 --- !u!61 &4694892698536062245
 BoxCollider2D:
   m_ObjectHideFlags: 0

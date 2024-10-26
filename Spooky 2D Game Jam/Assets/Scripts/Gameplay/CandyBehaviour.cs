@@ -26,13 +26,21 @@ public class CandyBehaviour : MonoBehaviour
         rb.rotation = throwAngle;
 
         // Destroying the Gameobject
-        Invoke("SelfDestruct", 2f);
+        Invoke("SelfDestruct", 4f);
     }
 
     void Update()
     {
         Vector2 movement = new Vector2(transform.forward.x, transform.forward.y);
         rb.AddForce(transform.up * moveForce, ForceMode2D.Impulse);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Zombie"))
+        {
+            this.GetComponent<CircleCollider2D>().enabled = false;
+        }
     }
 
     void SelfDestruct()

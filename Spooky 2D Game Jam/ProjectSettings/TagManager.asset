@@ -4,9 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - House1
-  - House2
-  - House3
+  - Candy
+  - Zombie
   layers:
   - Default
   - TransparentFX

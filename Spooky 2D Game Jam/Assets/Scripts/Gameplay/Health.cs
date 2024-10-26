@@ -20,6 +20,15 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage)
     {
         if (CurrentHealth - damage > 0) CurrentHealth -= damage;
-        else CurrentHealth = 0;
+        else
+        {
+            CurrentHealth = 0;
+            Invoke("SelfDestruct", 2);
+        }
+    }
+
+    void SelfDestruct()
+    {
+        Destroy(this.gameObject);
     }
 }
