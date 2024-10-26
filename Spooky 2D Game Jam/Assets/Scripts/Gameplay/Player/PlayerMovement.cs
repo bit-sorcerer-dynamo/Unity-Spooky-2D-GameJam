@@ -4,6 +4,12 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
 
+    [SerializeField] private float pushForce = 5f;
+
+    [Space(1), Header("Movement Boundaries")]
+    [SerializeField] private float maxHorizontalDistance = 7f;
+    [SerializeField] private float maxVerticalDistance = 4.25f;
+
     float horizontal;
     float vertical;
 
@@ -14,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -23,6 +28,28 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
+        // Setting Player Movement Boundaries
+        if ((transform.position.x <= maxHorizontalDistance && transform.position.x >= -maxHorizontalDistance) 
+            && (transform.position.y <= maxVerticalDistance && transform.position.y >= -maxVerticalDistance))
+        {
+            rb.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
+        }
+        // Pushing Player Inside the Boundary
+        else if (transform.position.x > maxHorizontalDistance)
+        {
+            rb.velocity = Vector2.right * -pushForce;
+        }
+        else if (transform.position.x < -maxHorizontalDistance)
+        {
+            rb.velocity = Vector2.left * -pushForce;
+        }
+        else if (transform.position.y > maxVerticalDistance)
+        {
+            rb.velocity = Vector2.down * pushForce;
+        }
+        else if (transform.position.y < -maxVerticalDistance)
+        {
+            rb.velocity = Vector2.up * pushForce;
+        }
     }
 }
