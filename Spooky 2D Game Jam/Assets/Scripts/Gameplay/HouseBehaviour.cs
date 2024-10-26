@@ -53,7 +53,6 @@ public class HouseBehaviour : MonoBehaviour
     {
         player.GetComponent<Health>().Heal(health);
         player.GetComponent<PlayerCurrency>().ReduceCurrencyValue(healthCost);
-        Debug.Log($"cost -> {candyCost} \n candies -> {candies}");
     }
 
     public void PurchaseCandies()
