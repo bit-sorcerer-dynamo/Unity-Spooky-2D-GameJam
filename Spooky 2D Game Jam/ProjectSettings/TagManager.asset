@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Candy
   - Zombie
+  - House
   layers:
   - Default
   - TransparentFX

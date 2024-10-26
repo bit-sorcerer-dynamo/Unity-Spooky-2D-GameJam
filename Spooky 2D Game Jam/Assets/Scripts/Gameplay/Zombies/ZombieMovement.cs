@@ -2,9 +2,10 @@
 
 public class ZombieMovement : MonoBehaviour
 {
+    [SerializeField] private VirtualCamFollow virtualCamFollow;
+
     [SerializeField] private Transform player;
     [SerializeField] private Transform headEntity;
-    [SerializeField] private float moveSpeed = 1;
     [SerializeField] private float repusleForce = 7f;
 
     private bool isPlayerInContact = false;
@@ -12,6 +13,8 @@ public class ZombieMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Transform selectedTarget;
     private Health zombieHealth;
+
+    public float moveSpeed = 1;
 
     void Start()
     {
@@ -23,28 +26,34 @@ public class ZombieMovement : MonoBehaviour
 
     void Update()
     {
-
-        if (isPlayerInContact)
+        if (!virtualCamFollow.isCutscene)
         {
-            
-            Vector2 repulseDir = transform.position - player.position;
-            rb.velocity = repulseDir.normalized * repusleForce;
-        }
-        else 
-        {
-            if (selectedTarget == null && player != null) selectedTarget = player;
-            else if (selectedTarget == null && player == null) selectedTarget = headEntity;
-
-            if (zombieHealth.CurrentHealth > 0)
+            if (isPlayerInContact)
             {
-                Vector2 moveDirection = selectedTarget.position - transform.position;
-                rb.velocity = moveDirection.normalized * moveSpeed;
+
+                Vector2 repulseDir = transform.position - player.position;
+                rb.velocity = repulseDir.normalized * repusleForce;
             }
             else
             {
-                rb.velocity = Vector2.zero;
-                Invoke("SelfDestruct", 1);
+                if (selectedTarget == null && player != null) selectedTarget = player;
+                else if (selectedTarget == null && player == null) selectedTarget = headEntity;
+
+                if (zombieHealth.CurrentHealth > 0)
+                {
+                    Vector2 moveDirection = selectedTarget.position - transform.position;
+                    rb.velocity = moveDirection.normalized * moveSpeed;
+                }
+                else
+                {
+                    rb.velocity = Vector2.zero;
+                    Invoke("SelfDestruct", 1);
+                }
             }
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
         }
     }
 

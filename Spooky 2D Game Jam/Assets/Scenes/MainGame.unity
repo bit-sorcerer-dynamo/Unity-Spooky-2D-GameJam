@@ -1762,6 +1762,11 @@ PrefabInstance:
       objectReference: {fileID: 1502584312}
     - target: {fileID: 3832999951783933903, guid: 5f28037ce9790224b8b76426548598a9,
         type: 3}
+      propertyPath: virtualCamFollow
+      value: 
+      objectReference: {fileID: 1502584312}
+    - target: {fileID: 3832999951783933903, guid: 5f28037ce9790224b8b76426548598a9,
+        type: 3}
       propertyPath: candyPurchaseButton
       value: 
       objectReference: {fileID: 1380956286}
@@ -2701,6 +2706,11 @@ PrefabInstance:
       objectReference: {fileID: 1502584312}
     - target: {fileID: 3832999951783933903, guid: 5f28037ce9790224b8b76426548598a9,
         type: 3}
+      propertyPath: virtualCamFollow
+      value: 
+      objectReference: {fileID: 1502584312}
+    - target: {fileID: 3832999951783933903, guid: 5f28037ce9790224b8b76426548598a9,
+        type: 3}
       propertyPath: candyPurchaseButton
       value: 
       objectReference: {fileID: 799807298}
@@ -2875,9 +2885,24 @@ PrefabInstance:
       objectReference: {fileID: 1533744688}
     - target: {fileID: 5884556054014834615, guid: 1a16fb6b45f310741b11eb6266a4fb39,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884556054014834615, guid: 1a16fb6b45f310741b11eb6266a4fb39,
+        type: 3}
       propertyPath: moveSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5884556054014834615, guid: 1a16fb6b45f310741b11eb6266a4fb39,
+        type: 3}
+      propertyPath: headEntity
+      value: 
+      objectReference: {fileID: 1401221122}
+    - target: {fileID: 5884556054014834615, guid: 1a16fb6b45f310741b11eb6266a4fb39,
+        type: 3}
+      propertyPath: virtualCamFollow
+      value: 
+      objectReference: {fileID: 1502584312}
     - target: {fileID: 5884556054014834616, guid: 1a16fb6b45f310741b11eb6266a4fb39,
         type: 3}
       propertyPath: m_Constraints
@@ -3121,9 +3146,24 @@ PrefabInstance:
       objectReference: {fileID: 1533744688}
     - target: {fileID: 5884556054014834615, guid: 1a16fb6b45f310741b11eb6266a4fb39,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884556054014834615, guid: 1a16fb6b45f310741b11eb6266a4fb39,
+        type: 3}
       propertyPath: moveSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5884556054014834615, guid: 1a16fb6b45f310741b11eb6266a4fb39,
+        type: 3}
+      propertyPath: headEntity
+      value: 
+      objectReference: {fileID: 1401221122}
+    - target: {fileID: 5884556054014834615, guid: 1a16fb6b45f310741b11eb6266a4fb39,
+        type: 3}
+      propertyPath: virtualCamFollow
+      value: 
+      objectReference: {fileID: 1502584312}
     - target: {fileID: 5884556054014834616, guid: 1a16fb6b45f310741b11eb6266a4fb39,
         type: 3}
       propertyPath: m_Constraints
@@ -3140,6 +3180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1401221122}
+  - component: {fileID: 1401221123}
   m_Layer: 0
   m_Name: HeadEntity
   m_TagString: Untagged
@@ -3162,6 +3203,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1401221123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401221121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2544f5067cbad344c807b14e819cc54a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1533744688}
+  candyPrefab: {fileID: 4537027172785440717, guid: 70cdec15b86ed9c46bb98b3f2ed50e37,
+    type: 3}
+  houseBehaviours: []
+  zombies: []
+  virtualCamFollow: {fileID: 1502584312}
+  virtualCam: {fileID: 493295910}
 --- !u!4 &1502584311 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6757400483823295365, guid: 4f20dbff63316ca499ed68098c759e1a,
@@ -3959,6 +4019,11 @@ PrefabInstance:
       propertyPath: currencyDisplayText
       value: 
       objectReference: {fileID: 505362535}
+    - target: {fileID: 3633658873136439292, guid: d2145341655a6be419a15f1f6e735c6b,
+        type: 3}
+      propertyPath: virtualCamFollow
+      value: 
+      objectReference: {fileID: 1502584312}
     - target: {fileID: 3633658873136439293, guid: d2145341655a6be419a15f1f6e735c6b,
         type: 3}
       propertyPath: m_RootOrder
@@ -4036,6 +4101,11 @@ PrefabInstance:
     - target: {fileID: 3832999951783933903, guid: 5f28037ce9790224b8b76426548598a9,
         type: 3}
       propertyPath: virtualCam
+      value: 
+      objectReference: {fileID: 1502584312}
+    - target: {fileID: 3832999951783933903, guid: 5f28037ce9790224b8b76426548598a9,
+        type: 3}
+      propertyPath: virtualCamFollow
       value: 
       objectReference: {fileID: 1502584312}
     - target: {fileID: 3832999951783933903, guid: 5f28037ce9790224b8b76426548598a9,
@@ -4219,9 +4289,24 @@ PrefabInstance:
       objectReference: {fileID: 1533744688}
     - target: {fileID: 5884556054014834615, guid: 1a16fb6b45f310741b11eb6266a4fb39,
         type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5884556054014834615, guid: 1a16fb6b45f310741b11eb6266a4fb39,
+        type: 3}
       propertyPath: moveSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5884556054014834615, guid: 1a16fb6b45f310741b11eb6266a4fb39,
+        type: 3}
+      propertyPath: headEntity
+      value: 
+      objectReference: {fileID: 1401221122}
+    - target: {fileID: 5884556054014834615, guid: 1a16fb6b45f310741b11eb6266a4fb39,
+        type: 3}
+      propertyPath: virtualCamFollow
+      value: 
+      objectReference: {fileID: 1502584312}
     - target: {fileID: 5884556054014834616, guid: 1a16fb6b45f310741b11eb6266a4fb39,
         type: 3}
       propertyPath: m_Constraints

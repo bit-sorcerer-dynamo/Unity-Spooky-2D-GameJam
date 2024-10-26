@@ -20,11 +20,14 @@ public class PlayerAttack : MonoBehaviour
     {
         candiesCountDisplayText.text = $"{CandiesCount}";
 
-        if (Input.GetMouseButtonDown(0)
-            && !virtualCam.isShopping && CandiesCount > 0)
+        if (!virtualCam.isCutscene)
         {
-            ThrowCandy();
-            CandiesCount--;
+            if (Input.GetMouseButtonDown(0)
+                && !virtualCam.isShopping && CandiesCount > 0)
+            {
+                ThrowCandy();
+                CandiesCount--;
+            }
         }
     }
 

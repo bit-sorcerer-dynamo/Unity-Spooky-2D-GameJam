@@ -2,9 +2,11 @@
 
 public class CandyBehaviour : MonoBehaviour
 {
-    [SerializeField] private float moveForce;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private VirtualCamFollow virtualCamFollow;
 
+    public float moveForce;
+    
     private Camera cam;
 
     private PlayerAttack playerAttack;
@@ -15,6 +17,7 @@ public class CandyBehaviour : MonoBehaviour
     {
         playerAttack = GameObject.Find("Player").GetComponent<PlayerAttack>();
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
+        virtualCamFollow = GameObject.Find("VirtualCamFollow").GetComponent<VirtualCamFollow>();
         rb = GetComponent<Rigidbody2D>();
 
         // Getting Position in Terms of Vectors
@@ -31,8 +34,16 @@ public class CandyBehaviour : MonoBehaviour
 
     void Update()
     {
-        Vector2 movement = new Vector2(transform.forward.x, transform.forward.y);
-        rb.AddForce(transform.up * moveForce, ForceMode2D.Impulse);
+        if (!virtualCamFollow.isCutscene)
+        {
+            Vector2 movement = new Vector2(transform.forward.x, transform.forward.y);
+            rb.AddForce(transform.up * moveForce, ForceMode2D.Impulse);
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

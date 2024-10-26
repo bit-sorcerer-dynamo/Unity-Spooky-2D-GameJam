@@ -4,10 +4,11 @@ using TMPro;
 
 public class HouseBehaviour : MonoBehaviour
 {
-    [SerializeField] private VirtualCamFollow virtualCam;
+    [SerializeField] private VirtualCamFollow virtualCamFollow;
 
     [SerializeField] private GameObject UIHolder;
 
+    #region Purchase Variables
     [SerializeField] private Button healthPurchaseButton;
     private TMP_Text healthPurchaseText;
     private int healthCost;
@@ -17,6 +18,7 @@ public class HouseBehaviour : MonoBehaviour
     private TMP_Text candyPurchaseText;
     private int candyCost;
     private int candies;
+    #endregion
 
     [SerializeField] private Transform player;
     private const string PLAYER_TAG = "Player";
@@ -35,7 +37,7 @@ public class HouseBehaviour : MonoBehaviour
         candyPurchaseText.text = $"{candies} candies \nfor ${candyCost}";
     }
 
-    void RandomizeItems()
+    public void RandomizeItems()
     {
         #region health
         healthCost = Random.Range(10, 35);
@@ -45,10 +47,10 @@ public class HouseBehaviour : MonoBehaviour
         #region candies
         candyCost = Random.Range(25, 51);
         candies = Random.Range(1, 25);
-
         #endregion
     }
 
+    #region Purchasing System
     public void PurchaseHealth()
     {
         player.GetComponent<PlayerCurrency>().ReduceCurrencyValue(healthCost);
@@ -66,22 +68,26 @@ public class HouseBehaviour : MonoBehaviour
             player.GetComponent<PlayerAttack>().AddCandies(candies);
         }
     }
+    #endregion
 
+    #region Set Camera And UI for Purchasing System
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(PLAYER_TAG))
         {
-            virtualCam.isShopping = true;
+            virtualCamFollow.isShopping = true;
             UIHolder.SetActive(true);
         }
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag(PLAYER_TAG))
         {
-            virtualCam.isShopping = false;
+            virtualCamFollow.isShopping = false;
             UIHolder.SetActive(false);
         }
     }
+    #endregion
 }
