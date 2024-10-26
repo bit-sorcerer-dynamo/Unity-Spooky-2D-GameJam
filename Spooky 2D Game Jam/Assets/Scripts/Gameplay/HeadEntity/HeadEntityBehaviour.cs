@@ -13,11 +13,12 @@ public class HeadEntityBehaviour : MonoBehaviour
     {
         houseBehaviours = GameObject.FindGameObjectsWithTag("House");
 
-        float repeatRate = Random.Range(10, 40);
-        InvokeRepeating("PerformChangeEffect", 2, repeatRate);
-        InvokeRepeating("RevertChangeEffect", 8, repeatRate);
+        float repeatRate = Random.Range(50, 60);
+        InvokeRepeating("PerformChangeEffect", 8, repeatRate);
+        InvokeRepeating("RevertChangeEffect", 12, repeatRate);
     }
 
+    // TODO :: Change House Values
     void ChangeHouseValues()
     {
         

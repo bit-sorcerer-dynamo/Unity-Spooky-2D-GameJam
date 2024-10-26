@@ -46,5 +46,5 @@ MonoBehaviour:
   enemyPrefab: {fileID: 5884556054014834613, guid: 1a16fb6b45f310741b11eb6266a4fb39,
     type: 3}
   spawnPoints: []
-  minSpawnTime: 1
-  maxSpawnTime: 5
+  minSpawnTime: 4
+  maxSpawnTime: 8

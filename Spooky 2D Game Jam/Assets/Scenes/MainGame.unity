@@ -3053,11 +3053,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2544f5067cbad344c807b14e819cc54a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1533744688}
-  candyPrefab: {fileID: 4537027172785440717, guid: 70cdec15b86ed9c46bb98b3f2ed50e37,
-    type: 3}
-  houseBehaviours: []
-  zombies: []
   virtualCamFollow: {fileID: 1502584312}
   virtualCam: {fileID: 493295910}
 --- !u!4 &1419564764 stripped
@@ -4303,6 +4298,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8110716575574251843, guid: 60633892f58c482408c36d4485f245ae,
+        type: 3}
+      propertyPath: maxSpawnTime
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8110716575574251843, guid: 60633892f58c482408c36d4485f245ae,
+        type: 3}
+      propertyPath: minSpawnTime
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8110716575574251843, guid: 60633892f58c482408c36d4485f245ae,
         type: 3}
