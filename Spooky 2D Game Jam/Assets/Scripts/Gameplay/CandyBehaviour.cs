@@ -2,8 +2,8 @@
 
 public class CandyBehaviour : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private VirtualCamFollow virtualCamFollow;
+    private Rigidbody2D rb;
+    private VirtualCamFollow virtualCamFollow;
 
     public float moveForce;
     
@@ -15,10 +15,15 @@ public class CandyBehaviour : MonoBehaviour
 
     void Awake()
     {
+        #region Finding and Accessing Objects
+
         playerAttack = GameObject.Find("Player").GetComponent<PlayerAttack>();
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         virtualCamFollow = GameObject.Find("VirtualCamFollow").GetComponent<VirtualCamFollow>();
         rb = GetComponent<Rigidbody2D>();
+
+
+        #endregion
 
         // Getting Position in Terms of Vectors
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);

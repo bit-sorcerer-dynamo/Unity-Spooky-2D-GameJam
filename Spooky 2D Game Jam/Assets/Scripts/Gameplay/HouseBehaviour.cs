@@ -20,8 +20,13 @@ public class HouseBehaviour : MonoBehaviour
     private int candies;
     #endregion
 
-    [SerializeField] private Transform player;
+    private Transform player;
     private const string PLAYER_TAG = "Player";
+
+    private void Awake()
+    {
+        player = GameObject.Find("Player").transform;
+    }
 
     private void Start()
     {

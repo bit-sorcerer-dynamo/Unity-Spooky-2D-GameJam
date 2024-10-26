@@ -4,8 +4,8 @@ public class ZombieMovement : MonoBehaviour
 {
     [SerializeField] private VirtualCamFollow virtualCamFollow;
 
-    [SerializeField] private Transform player;
-    [SerializeField] private Transform headEntity;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject headEntity;
     [SerializeField] private float repusleForce = 7f;
 
     private bool isPlayerInContact = false;
@@ -14,14 +14,22 @@ public class ZombieMovement : MonoBehaviour
     private Transform selectedTarget;
     private Health zombieHealth;
 
-    public float moveSpeed = 1;
+    public float moveSpeed = 1f;
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        headEntity = GameObject.FindGameObjectWithTag("Head");
+        virtualCamFollow = GameObject.Find("VirtualCamFollow").GetComponent<VirtualCamFollow>();
+    }
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         zombieHealth = GetComponent<Health>();
 
-        selectedTarget = player;
+        selectedTarget = player.transform;
+        moveSpeed = 1f;
     }
 
     void Update()
@@ -31,13 +39,13 @@ public class ZombieMovement : MonoBehaviour
             if (isPlayerInContact)
             {
 
-                Vector2 repulseDir = transform.position - player.position;
+                Vector2 repulseDir = transform.position - player.transform.position;
                 rb.velocity = repulseDir.normalized * repusleForce;
             }
             else
             {
-                if (selectedTarget == null && player != null) selectedTarget = player;
-                else if (selectedTarget == null && player == null) selectedTarget = headEntity;
+                if (selectedTarget == null && player != null) selectedTarget = player.transform;
+                else if (selectedTarget == null && player == null) selectedTarget = headEntity.transform;
 
                 if (zombieHealth.CurrentHealth > 0)
                 {
