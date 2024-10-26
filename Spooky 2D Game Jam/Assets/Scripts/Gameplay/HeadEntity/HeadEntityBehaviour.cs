@@ -18,10 +18,12 @@ public class HeadEntityBehaviour : MonoBehaviour
         InvokeRepeating("RevertChangeEffect", 12, repeatRate);
     }
 
-    // TODO :: Change House Values
     void ChangeHouseValues()
     {
-        
+        foreach (GameObject houseBehaviour in houseBehaviours)
+        {
+            houseBehaviour.GetComponent<HouseBehaviour>().RandomizeItems();
+        }
     }
 
     void PerformChangeEffect()
@@ -30,6 +32,7 @@ public class HeadEntityBehaviour : MonoBehaviour
         virtualCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 4f;
         virtualCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 4f;
 
+        ChangeHouseValues();
     }
 
     void RevertChangeEffect()
