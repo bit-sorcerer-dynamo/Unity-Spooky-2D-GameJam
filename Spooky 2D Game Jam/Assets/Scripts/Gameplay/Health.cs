@@ -2,18 +2,24 @@
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float maxHealth = 100f;
+    public float maxHealth = 100f;
 
-    private float currentHealth;
+    public float CurrentHealth { get; private set; }
 
     void Start()
     {
-        currentHealth = maxHealth;    
+        CurrentHealth = maxHealth;    
     }
 
-    void TakeDamage(float damage)
+    public void Heal(float healVal)
     {
-        if (currentHealth - damage > 0) currentHealth -= damage;
-        else currentHealth = 0;
+        if (CurrentHealth + healVal <= maxHealth) CurrentHealth += healVal;
+        else CurrentHealth = maxHealth;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        if (CurrentHealth - damage > 0) CurrentHealth -= damage;
+        else CurrentHealth = 0;
     }
 }
