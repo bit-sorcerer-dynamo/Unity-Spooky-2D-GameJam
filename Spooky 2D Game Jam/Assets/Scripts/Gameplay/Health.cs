@@ -23,12 +23,6 @@ public class Health : MonoBehaviour
         else
         {
             CurrentHealth = 0;
-            Invoke("SelfDestruct", 2);
         }
-    }
-
-    void SelfDestruct()
-    {
-        Destroy(this.gameObject);
     }
 }

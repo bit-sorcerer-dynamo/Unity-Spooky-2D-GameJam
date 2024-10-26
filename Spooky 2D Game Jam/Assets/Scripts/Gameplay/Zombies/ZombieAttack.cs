@@ -6,11 +6,12 @@ public class ZombieAttack : MonoBehaviour
     public float maxDamage;
 
     private Transform attackTarget;
+    private 
 
     void Attack(Transform target)
     {
         Health targetHealth = target.GetComponent<Health>();
-        float damage = Random.Range(minDamage, maxDamage);
+        float damage = UnityEngine.Random.Range(minDamage, maxDamage);
 
         targetHealth.TakeDamage(damage);
     }

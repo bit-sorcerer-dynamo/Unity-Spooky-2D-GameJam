@@ -26,7 +26,7 @@ public class CandyBehaviour : MonoBehaviour
         rb.rotation = throwAngle;
 
         // Destroying the Gameobject
-        Invoke("SelfDestruct", 4f);
+        Invoke("SelfDestruct", 2f);
     }
 
     void Update()

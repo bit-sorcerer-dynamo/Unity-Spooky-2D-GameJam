@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     float vertical;
 
     public float moveSpeed = 10f;
+    public bool isPlayerDead = false;
 
     void Start()
     {
@@ -58,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            isPlayerDead = true;
             rb.velocity = Vector2.zero;
         }
     }

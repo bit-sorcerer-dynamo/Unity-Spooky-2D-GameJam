@@ -51,14 +51,20 @@ public class HouseBehaviour : MonoBehaviour
 
     public void PurchaseHealth()
     {
-        player.GetComponent<Health>().Heal(health);
         player.GetComponent<PlayerCurrency>().ReduceCurrencyValue(healthCost);
+        if (player.GetComponent<PlayerCurrency>().paymentSuccess)
+        {
+            player.GetComponent<Health>().Heal(health);
+        }
     }
 
     public void PurchaseCandies()
     {
-        player.GetComponent<PlayerAttack>().AddCandies(candies);
         player.GetComponent<PlayerCurrency>().ReduceCurrencyValue(candyCost);
+        if (player.GetComponent<PlayerCurrency>().paymentSuccess)
+        {
+            player.GetComponent<PlayerAttack>().AddCandies(candies);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

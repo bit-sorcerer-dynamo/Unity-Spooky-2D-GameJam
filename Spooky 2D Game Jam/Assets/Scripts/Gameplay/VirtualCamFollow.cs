@@ -9,19 +9,32 @@ public class VirtualCamFollow : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Transform houseViewPoint;
     [SerializeField] private Transform cutsceneViewPoint;
-    
+
+    private Vector3 targetPosition;
     private float lerpTime = 10f;
 
     void Update()
     {
         if (!isCutscene)
         {
-            if (isShopping) transform.position = Vector3.Lerp(transform.position, houseViewPoint.position, lerpTime * Time.deltaTime);
-            else transform.position = Vector3.Lerp(transform.position, player.position, lerpTime);
+            if (isShopping) targetPosition = houseViewPoint.position;
+            else
+            {
+                if (!player.GetComponent<PlayerMovement>().isPlayerDead)
+                {
+                    targetPosition = player.position;
+                }
+                else
+                {
+                    targetPosition = cutsceneViewPoint.position;
+                }
+            }
         }
         else
         {
-            transform.position = Vector3.Lerp(transform.position, cutsceneViewPoint.position, lerpTime * Time.deltaTime);
+            targetPosition = cutsceneViewPoint.position;
         }
+
+        transform.position = Vector3.Lerp(transform.position, targetPosition, lerpTime * Time.deltaTime);
     }
 }

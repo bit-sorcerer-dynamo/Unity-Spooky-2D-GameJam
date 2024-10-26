@@ -152,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   moveSpeed: 1
+  repusleForce: 50
 --- !u!61 &5665892368137641566
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -204,4 +205,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDamage: 10
-  maxDamage: 50
+  maxDamage: 20

@@ -3,6 +3,7 @@ using TMPro;
 
 public class PlayerCurrency : MonoBehaviour
 {
+    public bool paymentSuccess = true;
     public int defaultCurrency = 100;
     public int Currency { get; private set; }
 
@@ -25,7 +26,13 @@ public class PlayerCurrency : MonoBehaviour
 
     public void ReduceCurrencyValue(int value)
     {
-        if (Currency - value > 0) Currency -= value;
-        else Currency = 0;
+        if (Currency - value >= 0) { 
+            Currency -= value;
+            paymentSuccess = true;
+        }
+        else
+        {
+            paymentSuccess = false;
+        }
     }
 }
