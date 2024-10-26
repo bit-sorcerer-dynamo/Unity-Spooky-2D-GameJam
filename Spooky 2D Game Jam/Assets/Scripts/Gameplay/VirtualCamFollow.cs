@@ -6,7 +6,7 @@ public class VirtualCamFollow : MonoBehaviour
     public bool isCutscene = false;
     
     [Space(1), Header("Camera Follow Targets")]
-    [SerializeField] private Transform player;
+    [SerializeField] private Vector3 playerViewPoint;
     [SerializeField] private Transform houseViewPoint;
     [SerializeField] private Transform cutsceneViewPoint;
 
@@ -17,17 +17,13 @@ public class VirtualCamFollow : MonoBehaviour
     {
         if (!isCutscene)
         {
-            if (isShopping) targetPosition = houseViewPoint.position;
+            if (isShopping)
+            {
+                targetPosition = houseViewPoint.position;
+            }
             else
             {
-                if (!player.GetComponent<PlayerMovement>().isPlayerDead)
-                {
-                    targetPosition = player.position;
-                }
-                else
-                {
-                    targetPosition = cutsceneViewPoint.position;
-                }
+                targetPosition = playerViewPoint;
             }
         }
         else
