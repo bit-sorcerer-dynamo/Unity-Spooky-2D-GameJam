@@ -19,7 +19,7 @@ public class HeadEntityBehaviour : MonoBehaviour
     {
         houseBehaviours = GameObject.FindGameObjectsWithTag("House");
 
-        float repeatRate = Random.Range(50, 60);
+        float repeatRate = Random.Range(30, 50);
         InvokeRepeating("PerformChangeEffect", 8, repeatRate);
         InvokeRepeating("RevertChangeEffect", 12, repeatRate);
     }
@@ -37,7 +37,7 @@ public class HeadEntityBehaviour : MonoBehaviour
         virtualCamFollow.isHeadEntityTweeking = true;
         virtualCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 4f;
         virtualCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 4f;
-
+        GetComponent<AudioSource>().Play();
         ChangeHouseValues();
     }
 

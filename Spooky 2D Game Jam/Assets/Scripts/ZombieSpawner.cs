@@ -18,7 +18,7 @@ public class ZombieSpawner : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
-        while (true)
+        while (!FindObjectOfType<VirtualCamFollow>().isHeadEntityTweeking)
         {
             float timeInterval = Random.Range(minSpawnTime, maxSpawnTime);
             yield return new WaitForSeconds(timeInterval);

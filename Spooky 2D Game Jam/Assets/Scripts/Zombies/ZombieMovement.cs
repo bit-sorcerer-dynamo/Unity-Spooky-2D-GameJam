@@ -18,6 +18,8 @@ public class ZombieMovement : MonoBehaviour
 
     private void Awake()
     {
+        FindObjectOfType<AudioSource>().Play();
+
         player = GameObject.FindGameObjectWithTag("Player");
         headEntity = GameObject.FindGameObjectWithTag("Head");
         virtualCamFollow = GameObject.Find("VirtualCamFollow").GetComponent<VirtualCamFollow>();
