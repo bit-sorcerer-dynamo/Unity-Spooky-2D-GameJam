@@ -39,7 +39,7 @@ public class CandyBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (!virtualCamFollow.isCutscene)
+        if (!virtualCamFollow.isHeadEntityTweeking)
         {
             Vector2 movement = new Vector2(transform.forward.x, transform.forward.y);
             rb.AddForce(transform.up * moveForce, ForceMode2D.Impulse);

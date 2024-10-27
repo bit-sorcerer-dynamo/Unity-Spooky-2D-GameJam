@@ -28,7 +28,7 @@ public class HeadEntityBehaviour : MonoBehaviour
 
     void PerformChangeEffect()
     {
-        virtualCamFollow.isCutscene = true;
+        virtualCamFollow.isHeadEntityTweeking = true;
         virtualCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 4f;
         virtualCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 4f;
 
@@ -37,7 +37,7 @@ public class HeadEntityBehaviour : MonoBehaviour
 
     void RevertChangeEffect()
     {
-        virtualCamFollow.isCutscene = false;
+        virtualCamFollow.isHeadEntityTweeking = false;
         virtualCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = 1.5f;
         virtualCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 1f;
     }

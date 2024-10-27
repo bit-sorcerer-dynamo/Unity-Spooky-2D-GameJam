@@ -34,7 +34,7 @@ public class ZombieMovement : MonoBehaviour
 
     void Update()
     {
-        if (!virtualCamFollow.isCutscene)
+        if (!virtualCamFollow.isHeadEntityTweeking)
         {
             if (isPlayerInContact)
             {
@@ -67,6 +67,10 @@ public class ZombieMovement : MonoBehaviour
 
     void SelfDestruct()
     {
+        ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+        if((scoreManager.enemiesToKill - 1) >= 0)
+            scoreManager.enemiesToKill--;
+
         Destroy(this.gameObject);
     }
 

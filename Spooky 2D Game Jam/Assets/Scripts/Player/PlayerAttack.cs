@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private TMP_Text candiesCountDisplayText;
 
     public int maxCandies = 300;
+    public bool canShoot = true;
     public int CandiesCount { get; private set; }
 
     private void Start()
@@ -20,7 +21,7 @@ public class PlayerAttack : MonoBehaviour
     {
         candiesCountDisplayText.text = $"{CandiesCount}";
 
-        if (!virtualCam.isCutscene)
+        if (!virtualCam.isHeadEntityTweeking && canShoot)
         {
             if (Input.GetMouseButtonDown(0)
                 && !virtualCam.isShopping && CandiesCount > 0)

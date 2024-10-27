@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!virtualCamFollow.isCutscene)
+        if (!virtualCamFollow.isHeadEntityTweeking)
         {
             if (playerHealth.CurrentHealth > 0)
             {

@@ -3,7 +3,7 @@
 public class VirtualCamFollow : MonoBehaviour
 {
     public bool isShopping = false;
-    public bool isCutscene = false;
+    public bool isHeadEntityTweeking = false;
     
     [Space(1), Header("Camera Follow Targets")]
     [SerializeField] private Vector3 playerViewPoint;
@@ -15,7 +15,7 @@ public class VirtualCamFollow : MonoBehaviour
 
     void Update()
     {
-        if (!isCutscene)
+        if (!isHeadEntityTweeking)
         {
             if (isShopping)
             {
