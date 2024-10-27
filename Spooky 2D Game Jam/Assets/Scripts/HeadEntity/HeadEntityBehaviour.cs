@@ -11,6 +11,12 @@ public class HeadEntityBehaviour : MonoBehaviour
 
     private void Start()
     {
+        // Starts The Head as soon as the Time is Paused in Game Manager
+        Invoke("StartHeadEntity", FindObjectOfType<DialougePlayer>().pauseTime);
+    }
+    
+    void StartHeadEntity()
+    {
         houseBehaviours = GameObject.FindGameObjectsWithTag("House");
 
         float repeatRate = Random.Range(50, 60);

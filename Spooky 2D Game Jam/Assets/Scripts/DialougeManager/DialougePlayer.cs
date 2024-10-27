@@ -7,6 +7,7 @@ public class DialougePlayer : MonoBehaviour
 {
     public DialougeSO player;
     public DialougeSO unknown;
+    public float pauseTime = 2f;
 
     private DialougeSO currentDialougeHolder;
     private bool canDoNextDialouge = false;
@@ -15,19 +16,33 @@ public class DialougePlayer : MonoBehaviour
 
     [SerializeField] private TMP_Text speakerDisplay;
     [SerializeField] private TMP_Text dialougeDisplay;
-    [SerializeField] private GameObject displayPanel;
+
+    [Header("Animation")]
+    [SerializeField] private Animator dialougeAnimator;
 
     private void Start()
     {
         sentences = new Queue<string>();
-        FindObjectOfType<GameManager>().isGamePaused = true;
+        Invoke("AlterIsGamePaused", pauseTime);
 
+        dialougeAnimator.SetBool("hasDialougeStarted", true);
         StartDialouge(player);
+    }
+
+    void AlterIsGamePaused()
+    {
+        if (FindObjectOfType<GameManager>().isGamePaused)
+        {
+            FindObjectOfType<GameManager>().isGamePaused = false;
+        }
+        else
+        {
+            FindObjectOfType<GameManager>().isGamePaused = true;
+        }
     }
 
     public void StartDialouge(DialougeSO dialougeHolder)
     {
-        // open animation
         canDoNextDialouge = false;
 
         FindObjectOfType<PlayerAttack>().canShoot = false;
@@ -79,11 +94,10 @@ public class DialougePlayer : MonoBehaviour
         if (currentDialougeHolder.speaker == player.speaker) StartDialouge(unknown);
         else if(currentDialougeHolder.speaker == unknown.speaker)
         {
-            // close animation
-            displayPanel.SetActive(false);
+            dialougeAnimator.SetBool("hasDialougeStarted", false);
 
             FindObjectOfType<PlayerAttack>().canShoot = true;
-            FindObjectOfType<GameManager>().isGamePaused = false;
+            AlterIsGamePaused();
         }
     }
 }
