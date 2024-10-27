@@ -4,6 +4,7 @@ public class ZombieAttack : MonoBehaviour
 {
     public float minDamage = 10f;
     public float maxDamage = 20f;
+    public AudioSource deathAudioSource;
 
     private Transform attackTarget;
 

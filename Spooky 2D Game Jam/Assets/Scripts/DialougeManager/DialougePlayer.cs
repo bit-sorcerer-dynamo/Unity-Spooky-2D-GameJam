@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class DialougePlayer : MonoBehaviour
@@ -24,17 +25,25 @@ public class DialougePlayer : MonoBehaviour
 
     private void Start()
     {
+        Invoke("StartDialogueSystem", 0.4f);
+    }
+
+    void StartDialogueSystem()
+    {
         dialougePanel.SetActive(true);
 
         sentences = new Queue<string>();
-        Invoke("AlterIsGamePaused", pauseTime);
+        if(SceneManager.GetActiveScene().name == "MainGame") Invoke("AlterIsGamePaused", pauseTime);
 
-        dialougeAnimator.SetBool("hasDialougeStarted", true);
-        StartDialouge(player);
+        if (dialougeAnimator != null) dialougeAnimator.SetBool("hasDialougeStarted", true);
+        if (player != null) StartDialouge(player);
+        else StartDialouge(unknown);
     }
 
     void AlterIsGamePaused()
     {
+        if (FindObjectOfType<GameManager>() == null) return;
+
         if (FindObjectOfType<GameManager>().isGamePaused)
         {
             FindObjectOfType<GameManager>().isGamePaused = false;
@@ -47,9 +56,12 @@ public class DialougePlayer : MonoBehaviour
 
     public void StartDialouge(DialougeSO dialougeHolder)
     {
+        if (dialougeHolder == null) return;
+
         canDoNextDialouge = false;
 
-        FindObjectOfType<PlayerAttack>().canShoot = false;
+        if(FindObjectOfType<PlayerAttack>() != null) FindObjectOfType<PlayerAttack>().canShoot = false;
+        
         currentDialougeHolder = dialougeHolder;
 
         sentences.Clear();
@@ -83,7 +95,8 @@ public class DialougePlayer : MonoBehaviour
 
             string sentence = sentences.Dequeue();
 
-            if (sentence.StartsWith("BTW"))
+            // This works for two different scenes with different sentences with different sounds
+            if (sentence.StartsWith("BTW") || sentence.StartsWith("Now,") || sentence.StartsWith("I don't"))
             {
                 creepyLaughAudioSource.Play();
             }
@@ -108,13 +121,31 @@ public class DialougePlayer : MonoBehaviour
 
     void EndDialouge()
     {
-        if (currentDialougeHolder.speaker == player.speaker) StartDialouge(unknown);
-        else if(currentDialougeHolder.speaker == unknown.speaker)
+        if(player == null)
         {
-            dialougeAnimator.SetBool("hasDialougeStarted", false);
+            // Assuming that unknown will be the speaker i.e End Scene
+            if (dialougeAnimator == null)
+            {
+                Debug.Log("Quit");
+                Application.Quit();
+                return;
+            }
+        }
 
-            FindObjectOfType<PlayerAttack>().canShoot = true;
-            AlterIsGamePaused();
+        if (currentDialougeHolder.speaker == player.speaker)
+        {
+            StartDialouge(unknown);
+        }
+        else if(currentDialougeHolder.speaker == unknown.speaker)
+        { 
+
+            if (dialougeAnimator != null)
+            {
+                dialougeAnimator.SetBool("hasDialougeStarted", false);
+
+                FindObjectOfType<PlayerAttack>().canShoot = true;
+                AlterIsGamePaused();
+            }
         }
     }
 }

@@ -4,6 +4,29 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public bool isGamePaused;
+    public Animator _transitionAnimator;
+
+    public DialougeSO unknown_lost;
+    public DialougeSO unknown_win;
+
+    [SerializeField] private DialougeSO chosenDialogueSO;
+
+    private void Start()
+    {
+        if(SceneManager.GetActiveScene().name == "EndScene")
+        {
+            _transitionAnimator.SetInteger("Transition", 1);
+
+            // Check if Player Won
+            string playerWon = PlayerPrefs.GetString("player_won");
+
+            if (playerWon == "playerWon") chosenDialogueSO = unknown_win;
+            else if (playerWon == "playerLost") chosenDialogueSO = unknown_win;
+
+            // Setting the right Dialogues for the Player
+            FindObjectOfType<DialougePlayer>().unknown = chosenDialogueSO;
+        }
+    }
 
     private void Update()
     {
@@ -19,13 +42,23 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
-        Debug.Log("Win Game");
-        // Transition Animation to Win Screen
+        PlayerPrefs.SetString("player_won", "playerWon");
+        SceneTransition("EndScene");
     }
 
     public void LoseGame()
     {
-        Debug.Log("Lose Game");
-        // Transition Animation to Lose Screen
+        PlayerPrefs.SetString("player_won", "playerLost");
+        SceneTransition("EndScene");
+    }
+
+    public void Retry()
+    {
+        SceneTransition("MainGame");
+    }
+
+    void SceneTransition(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }

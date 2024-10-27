@@ -23,6 +23,10 @@ public class Health : MonoBehaviour
         else
         {
             CurrentHealth = 0;
+            if (GetComponent<ZombieAttack>())
+            {
+                GetComponent<ZombieAttack>().deathAudioSource.Play();
+            }
         }
     }
 }

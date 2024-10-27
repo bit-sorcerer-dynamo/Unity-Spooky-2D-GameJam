@@ -18,7 +18,7 @@ public class ZombieMovement : MonoBehaviour
 
     private void Awake()
     {
-        FindObjectOfType<AudioSource>().Play();
+        GetComponent<AudioSource>().Play();
 
         player = GameObject.FindGameObjectWithTag("Player");
         headEntity = GameObject.FindGameObjectWithTag("Head");
