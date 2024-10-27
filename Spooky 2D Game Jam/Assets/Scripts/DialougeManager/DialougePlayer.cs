@@ -121,15 +121,11 @@ public class DialougePlayer : MonoBehaviour
 
     void EndDialouge()
     {
-        if(player == null)
+        if (SceneManager.GetActiveScene().name == "EndScene")
         {
-            // Assuming that unknown will be the speaker i.e End Scene
-            if (dialougeAnimator == null)
-            {
-                Debug.Log("Quit");
-                Application.Quit();
-                return;
-            }
+            Debug.Log("Quit");
+            Application.Quit();
+            return;
         }
 
         if (currentDialougeHolder.speaker == player.speaker)

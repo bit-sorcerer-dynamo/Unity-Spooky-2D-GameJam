@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     public DialougeSO unknown_win;
 
     [SerializeField] private DialougeSO chosenDialogueSO;
+    [SerializeField] private AudioSource gameWinAudio;
+    [SerializeField] private AudioSource gameLoseAudio;
+    [SerializeField] private AudioSource outroAudio;
 
     private void Start()
     {
@@ -20,12 +23,27 @@ public class GameManager : MonoBehaviour
             // Check if Player Won
             string playerWon = PlayerPrefs.GetString("player_won");
 
-            if (playerWon == "playerWon") chosenDialogueSO = unknown_win;
-            else if (playerWon == "playerLost") chosenDialogueSO = unknown_win;
+            if (playerWon == "playerWon")
+            {
+                gameWinAudio.Play();
+                chosenDialogueSO = unknown_win;
+            }
+            else if (playerWon == "playerLost")
+            {
+                gameLoseAudio.Play();
+                chosenDialogueSO = unknown_lost;
+            }
 
             // Setting the right Dialogues for the Player
             FindObjectOfType<DialougePlayer>().unknown = chosenDialogueSO;
         }
+
+        if(outroAudio != null) Invoke("PlayOutro", 1);
+    }
+
+    void PlayOutro()
+    {
+        outroAudio.Play();
     }
 
     private void Update()

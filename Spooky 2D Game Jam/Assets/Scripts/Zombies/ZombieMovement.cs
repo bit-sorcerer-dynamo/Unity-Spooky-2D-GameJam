@@ -8,6 +8,7 @@ public class ZombieMovement : MonoBehaviour
     [SerializeField] private GameObject headEntity;
     [SerializeField] private float repusleForce = 7f;
 
+    private AudioSource zombieDeathAudio;
     private bool isPlayerInContact = false;
 
     private Rigidbody2D rb;
@@ -20,6 +21,7 @@ public class ZombieMovement : MonoBehaviour
     {
         GetComponent<AudioSource>().Play();
 
+        zombieDeathAudio = GameObject.Find("ZombieDeathAudio").GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
         headEntity = GameObject.FindGameObjectWithTag("Head");
         virtualCamFollow = GameObject.Find("VirtualCamFollow").GetComponent<VirtualCamFollow>();
@@ -68,7 +70,7 @@ public class ZombieMovement : MonoBehaviour
                 else
                 {
                     rb.velocity = Vector2.zero;
-                    Invoke("SelfDestruct", 1);
+                    SelfDestruct();
                 }
             }
         }
@@ -80,6 +82,8 @@ public class ZombieMovement : MonoBehaviour
 
     void SelfDestruct()
     {
+        zombieDeathAudio.Play();
+
         ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
         if((scoreManager.enemiesToKill - 1) >= 0)
             scoreManager.enemiesToKill--;

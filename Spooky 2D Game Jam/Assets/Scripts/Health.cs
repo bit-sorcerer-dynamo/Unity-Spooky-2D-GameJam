@@ -3,6 +3,7 @@
 public class Health : MonoBehaviour
 {
     public float maxHealth = 100f;
+    public AudioSource hurtAudio;
 
     public float CurrentHealth { get; private set; }
 
@@ -19,14 +20,15 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (GetComponent<PlayerAttack>())
+        {
+            hurtAudio.Play();
+        }
+
         if (CurrentHealth - damage > 0) CurrentHealth -= damage;
         else
         {
             CurrentHealth = 0;
-            if (GetComponent<ZombieAttack>())
-            {
-                GetComponent<ZombieAttack>().deathAudioSource.Play();
-            }
         }
     }
 }
