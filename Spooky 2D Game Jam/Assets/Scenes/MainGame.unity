@@ -1288,7 +1288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6886792, g: 0.6886792, b: 0.6886792, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1908,7 +1908,7 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 0
   m_HDR: 1
-  m_AllowMSAA: 0
+  m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 0
@@ -2584,7 +2584,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 42.1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5067,6 +5067,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5659756443260395347, guid: a19b688cbb6c2ed4bb9f89b0ae0db923,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 041db0ca62e24e24aa88d3b41d5edee6, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a19b688cbb6c2ed4bb9f89b0ae0db923, type: 3}
 --- !u!1001 &2830598355278175230
@@ -5219,6 +5224,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3633658873136439266, guid: d2145341655a6be419a15f1f6e735c6b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3633658873136439288, guid: d2145341655a6be419a15f1f6e735c6b,
         type: 3}
       propertyPath: healthBar
@@ -5337,6 +5347,11 @@ PrefabInstance:
       propertyPath: Priority
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 2837702392600566075, guid: 92484a435bd9f1f4cb237ef6cb6fc098,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4194801430929224573, guid: 92484a435bd9f1f4cb237ef6cb6fc098,
         type: 3}
       propertyPath: m_Name
@@ -5422,8 +5437,24 @@ PrefabInstance:
       propertyPath: dialougeAnimator
       value: 
       objectReference: {fileID: 696809182}
+    - target: {fileID: 4194801430929224575, guid: 92484a435bd9f1f4cb237ef6cb6fc098,
+        type: 3}
+      propertyPath: creepyLaughAudioSource
+      value: 
+      objectReference: {fileID: 4194801430458665334}
+    - target: {fileID: 8376707123185698592, guid: 92484a435bd9f1f4cb237ef6cb6fc098,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92484a435bd9f1f4cb237ef6cb6fc098, type: 3}
+--- !u!82 &4194801430458665334 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8376707123185698592, guid: 92484a435bd9f1f4cb237ef6cb6fc098,
+    type: 3}
+  m_PrefabInstance: {fileID: 4194801430458665333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4837098124744741693
 PrefabInstance:
   m_ObjectHideFlags: 0

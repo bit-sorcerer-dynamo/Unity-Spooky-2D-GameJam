@@ -28,6 +28,10 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+
+        // Flip the Sprite if Moving in Opposite Directions
+        if (horizontal < 0) GetComponentInChildren<SpriteRenderer>().flipX = true;
+        else if (horizontal > 0) GetComponentInChildren<SpriteRenderer>().flipX = false;
     }
 
     private void FixedUpdate()
@@ -35,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         if (!virtualCamFollow.isHeadEntityTweeking)
         {
             if (playerHealth.CurrentHealth > 0)
-            {
+            { 
                 // Setting Player Movement Boundaries
                 if ((transform.position.x <= maxHorizontalDistance && transform.position.x >= -maxHorizontalDistance)
                     && (transform.position.y <= maxVerticalDistance && transform.position.y >= -maxVerticalDistance))

@@ -25,6 +25,8 @@ public class CandyBehaviour : MonoBehaviour
 
         #endregion
 
+        GetComponent<AudioSource>().Play();
+
         // Getting Position in Terms of Vectors
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
         throwDirection = mousePos - new Vector2(playerAttack.transform.position.x, playerAttack.transform.position.y);

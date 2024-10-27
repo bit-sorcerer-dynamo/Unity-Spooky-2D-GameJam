@@ -18,8 +18,9 @@ public class DialougePlayer : MonoBehaviour
     [SerializeField] private TMP_Text dialougeDisplay;
     [SerializeField] private GameObject dialougePanel;
 
-    [Header("Animation")]
+    [Header("Animations & Sounds")]
     [SerializeField] private Animator dialougeAnimator;
+    [SerializeField] private AudioSource creepyLaughAudioSource;
 
     private void Start()
     {
@@ -81,6 +82,12 @@ public class DialougePlayer : MonoBehaviour
             }
 
             string sentence = sentences.Dequeue();
+
+            if (sentence.StartsWith("BTW"))
+            {
+                creepyLaughAudioSource.Play();
+            }
+
             StartCoroutine(TypeSentence(sentence));
         }
     }

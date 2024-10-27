@@ -56,8 +56,14 @@ public class HouseBehaviour : MonoBehaviour
     }
 
     #region Purchasing System
+    void PlayPurchaseSound()
+    {
+        GetComponent<AudioSource>().Play();
+    }
+
     public void PurchaseHealth()
     {
+        PlayPurchaseSound();
         player.GetComponent<PlayerCurrency>().ReduceCurrencyValue(healthCost);
         if (player.GetComponent<PlayerCurrency>().paymentSuccess)
         {
@@ -67,6 +73,7 @@ public class HouseBehaviour : MonoBehaviour
 
     public void PurchaseCandies()
     {
+        PlayPurchaseSound();
         player.GetComponent<PlayerCurrency>().ReduceCurrencyValue(candyCost);
         if (player.GetComponent<PlayerCurrency>().paymentSuccess)
         {
