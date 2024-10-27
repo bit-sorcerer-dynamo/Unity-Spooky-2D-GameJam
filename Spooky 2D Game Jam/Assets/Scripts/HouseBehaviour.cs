@@ -38,8 +38,8 @@ public class HouseBehaviour : MonoBehaviour
 
     private void Update()
     {
-        healthPurchaseText.text = $"{health} health \nfor ${healthCost}";
-        candyPurchaseText.text = $"{candies} candies \nfor ${candyCost}";
+        healthPurchaseText.text = $"{health} health for ${healthCost}";
+        candyPurchaseText.text = $"{candies} candies for ${candyCost}";
     }
 
     public void RandomizeItems()

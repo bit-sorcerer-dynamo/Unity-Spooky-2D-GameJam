@@ -19,11 +19,13 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
+        Debug.Log("Win Game");
         // Transition Animation to Win Screen
     }
 
     public void LoseGame()
     {
+        Debug.Log("Lose Game");
         // Transition Animation to Lose Screen
     }
 }

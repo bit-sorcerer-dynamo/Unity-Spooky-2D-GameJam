@@ -16,12 +16,15 @@ public class DialougePlayer : MonoBehaviour
 
     [SerializeField] private TMP_Text speakerDisplay;
     [SerializeField] private TMP_Text dialougeDisplay;
+    [SerializeField] private GameObject dialougePanel;
 
     [Header("Animation")]
     [SerializeField] private Animator dialougeAnimator;
 
     private void Start()
     {
+        dialougePanel.SetActive(true);
+
         sentences = new Queue<string>();
         Invoke("AlterIsGamePaused", pauseTime);
 
@@ -62,6 +65,11 @@ public class DialougePlayer : MonoBehaviour
 
     }
 
+    public void PlayNextButtonSound()
+    {
+        GetComponentInChildren<AudioSource>().Play();
+    }
+
     public void DisplayNextSentence()
     {
         if (canDoNextDialouge)
@@ -84,6 +92,8 @@ public class DialougePlayer : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialougeDisplay.text += letter;
+
+            GetComponent<AudioSource>().Play();
             yield return null;
         }
         canDoNextDialouge = true;

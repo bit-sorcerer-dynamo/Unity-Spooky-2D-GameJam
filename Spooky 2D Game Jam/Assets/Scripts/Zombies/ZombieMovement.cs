@@ -49,8 +49,19 @@ public class ZombieMovement : MonoBehaviour
 
                 if (zombieHealth.CurrentHealth > 0)
                 {
-                    Vector2 moveDirection = selectedTarget.position - transform.position;
-                    rb.velocity = moveDirection.normalized * moveSpeed;
+                    Vector2 moveDirection = (selectedTarget.position - transform.position).normalized;
+
+                    // Flip the Character
+                    if (moveDirection.x > 0)
+                    {
+                        GetComponentInChildren<SpriteRenderer>().flipX = true;
+                    }
+                    else if(moveDirection.x < 0)
+                    {
+                        GetComponentInChildren<SpriteRenderer>().flipX = false;
+                    }
+
+                    rb.velocity = moveDirection * moveSpeed;
                 }
                 else
                 {
